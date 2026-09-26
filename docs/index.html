@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COWLS Lens Gallery</title>
+<meta name="description" content="Browse every strong-lens candidate of the COSMOS-Web Lens Survey (COWLS): JWST RGB images, PyAutoLens models and .fits downloads.">
+<link rel="stylesheet" href="site.css">
+<script src="site.js" defer></script>
+</head>
+<body data-page="index">
+<header class="topbar"><div class="wrap"><a class="brand" href="index.html">COWLS</a><nav class="topnav" aria-label="Site"><a href="index.html">Gallery</a><a href="about.html">About the data</a><a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a></nav></div></header>
+<div class="wrap hero">
+  <h1>The COSMOS-Web Lens Survey (COWLS)</h1>
+  <p>Strong-lens candidates found by visually inspecting ~42,000 JWST NIRCam cutouts from the 0.54&nbsp;deg² COSMOS-Web survey. Each candidate has four-band JWST imaging (F115W, F150W, F277W, F444W), a PyAutoLens lens model for most, and archival HST, MIRI and ground-based data. <code>M25</code> holds the 17 spectacular lenses of COWLS&nbsp;II; <code>S12</code>&ndash;<code>S00</code> are candidates ranked by their visual-inspection score, from very high to very low quality. Click a thumbnail for that lens's images, model results and downloads.</p>
+  <ul class="papers">
+    <li><strong>COWLS I</strong> Nightingale et al. 2025, MNRAS &middot; <a href="https://arxiv.org/abs/2503.08777">arXiv</a> &middot; <a href="https://doi.org/10.1093/mnras/staf1253">DOI</a></li>
+    <li><strong>COWLS II</strong> Mahler et al. 2025, MNRAS Letters &middot; <a href="https://arxiv.org/abs/2503.08782">arXiv</a> &middot; <a href="https://doi.org/10.1093/mnrasl/slaf088">DOI</a></li>
+    <li><strong>COWLS III</strong> Hogg et al. 2025, MNRAS &middot; <a href="https://arxiv.org/abs/2503.08785">arXiv</a> &middot; <a href="https://doi.org/10.1093/mnras/staf1678">DOI</a></li>
+    <li><a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a></li>
+  </ul>
+</div>
+<div class="controls">
+  <div class="wrap">
+    <div class="chips" id="tier-chips" role="group" aria-label="Filter by tier"></div>
+    <div class="row">
+      <div class="grow"><input type="search" id="search" placeholder="Search by code, e.g. COSJ1000" aria-label="Search by lens code" autocomplete="off" spellcheck="false"></div>
+      <label class="row" style="gap:6px"><span class="muted">Sort</span> <select id="sort" aria-label="Sort order"></select></label>
+      <button type="button" class="toggle" id="view-toggle" aria-pressed="false">Show table</button>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+  </div>
+</div>
+<main class="wrap" id="results"><p class="empty">Loading the catalogue&hellip;</p></main>
+<footer><div class="wrap">COSMOS-Web Lens Survey (COWLS) public data release. Images and <code>.fits</code> files are served directly from the <a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a>. Lens modeling with <a href="https://github.com/Jammy2211/PyAutoLens">PyAutoLens</a>.</div></footer>
+</body>
+</html>
