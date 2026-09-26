@@ -1,0 +1,58 @@
+cff-version: 1.2.0
+message: >-
+  If you use COWLS data, please cite the three COWLS papers: COWLS I
+  (Nightingale et al. 2025, doi:10.1093/mnras/staf1253), COWLS II
+  (Mahler et al. 2025, doi:10.1093/mnrasl/slaf088) and COWLS III
+  (Hogg et al. 2025, doi:10.1093/mnras/staf1678). BibTeX entries are in
+  CITATIONS.bib.
+title: "The COSMOS-Web Lens Survey (COWLS): public data release"
+type: dataset
+authors:
+  - family-names: Nightingale
+    given-names: James W.
+  - name: "The COSMOS-Web Lensing Science Working Group"
+repository-code: "https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey"
+url: "https://jammy2211.github.io/COWLS_COSMOS_Web_Lens_Survey/"
+license: MIT
+keywords:
+  - strong gravitational lensing
+  - JWST
+  - COSMOS-Web
+  - PyAutoLens
+preferred-citation:
+  type: article
+  title: "The COSMOS-Web Lens Survey (COWLS) I: Discovery of >100 high redshift strong lenses in contiguous JWST imaging"
+  authors:
+    - family-names: Nightingale
+      given-names: James W.
+    - name: "et al."
+  journal: "Monthly Notices of the Royal Astronomical Society"
+  year: 2025
+  doi: "10.1093/mnras/staf1253"
+  identifiers:
+    - type: other
+      value: "arXiv:2503.08777"
+references:
+  - type: article
+    title: "The COSMOS-Web Lens Survey (COWLS) II: depth, resolution, and NIR coverage from JWST reveal 17 spectacular lenses"
+    authors:
+      - family-names: Mahler
+        given-names: Guillaume
+      - name: "et al."
+    journal: "Monthly Notices of the Royal Astronomical Society: Letters"
+    year: 2025
+    start: "L8"
+    end: "L14"
+    doi: "10.1093/mnrasl/slaf088"
+  - type: article
+    title: "The COSMOS-Web Lens Survey (COWLS) III: forecasts versus data"
+    authors:
+      - family-names: Hogg
+        given-names: Natalie B.
+      - name: "et al."
+    journal: "Monthly Notices of the Royal Astronomical Society"
+    year: 2025
+    volume: 544
+    start: 782
+    end: 798
+    doi: "10.1093/mnras/staf1678"
