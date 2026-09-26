@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About COWLS Data</title>
+<meta name="description" content="What is in the COWLS data release: catalogue columns, per-lens files, archival and PRIMER data, and the definitions of the physical quantities.">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.getElementById('prose'), {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+</head>
+<body data-page="about">
+<header class="topbar"><div class="wrap"><a class="brand" href="index.html">COWLS</a><nav class="topnav" aria-label="Site"><a href="index.html">Gallery</a><a href="about.html">About the data</a><a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a></nav></div></header>
+<main class="wrap">
+<article class="prose" id="prose">
+<h1 style="margin-top:24px">About the COWLS data</h1>
+<p>The data release lives in the <a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a>. Lenses are grouped into tier folders: <code>M25</code> (the 17 spectacular, confirmed lenses of COWLS&nbsp;II) and <code>S00</code>&ndash;<code>S12</code> (418 candidates, named by visual-inspection score). The catalogue also lists 5 <code>P18</code> rows: known lenses from prior work included in the catalogue for completeness; they have no COWLS data folder.</p>
+
+<h2 id="catalogue">Catalogue</h2>
+<p>The file <code>catalogue.csv</code> has 440 rows (435 candidates with a data folder plus the 5 <code>P18</code> lenses) and the following columns.</p>
+<h3>Basic information</h3>
+<ul>
+  <li><code>code</code>: unique identifier for the candidate.</li>
+  <li><code>score</code>: visual inspection score (the tier folder, e.g. <code>M25</code>, <code>S07</code>, <code>P18</code>).</li>
+  <li><code>ranking</code>: the individual visual-inspection grades behind the score.</li>
+  <li><code>ra</code>, <code>dec</code>: right ascension and declination of the candidate (degrees).</li>
+</ul>
+<h3>COSMOS-Web archival data (if available)</h3>
+<ul>
+  <li><code>lens_spec_z</code>: lens galaxy spectroscopic redshift.</li>
+  <li><code>lens_cw_photo_z_med</code>: lens galaxy photometric redshift.</li>
+  <li><code>lens_cw_stmass_med</code>: lens galaxy stellar mass, $\log_{10}(M_\star / M_\odot)$.</li>
+</ul>
+<h3>PyAutoLens modeling results</h3>
+<ul>
+  <li><code>einstein_radius</code>: Einstein radius of the candidate (arcsec).</li>
+  <li><code>F115W_lens_magnitude_ab</code>, <code>F150W_lens_magnitude_ab</code>, <code>F277W_lens_magnitude_ab</code>, <code>F444W_lens_magnitude_ab</code>: lens galaxy magnitudes.</li>
+  <li><code>F115W_source_magnitude_ab</code>, <code>F150W_source_magnitude_ab</code>, <code>F277W_source_magnitude_ab</code>, <code>F444W_source_magnitude_ab</code>: delensed source galaxy magnitudes.</li>
+  <li><code>F115W_magnification</code>, <code>F150W_magnification</code>, <code>F277W_magnification</code>, <code>F444W_magnification</code>: magnification factors.</li>
+</ul>
+
+<h2 id="lens-data">Individual lens data</h2>
+<p>Each candidate folder <code>&lt;tier&gt;/&lt;code&gt;/</code> contains:</p>
+<h3>Image files</h3>
+<ul>
+  <li><code>1_rgb_fit_summary.png</code>: RGB images, source reconstructions and lens-subtracted images (lenses with a model).</li>
+  <li><code>2_visual_first_round.jpeg</code>: image from the first round of visual inspection.</li>
+  <li><code>3_multi_wavelength_dataset.png</code>: image, masked image, lens-subtracted image, S/N map and source S/N map.</li>
+  <li><code>4_sie_fit.png</code>: lens model components inferred by PyAutoLens for all bands.</li>
+  <li><code>5_source_reconstruction.png</code>: delensed source reconstructions.</li>
+  <li><code>6_rgb.png</code>: RGB image of the candidate (every lens).</li>
+  <li>For a subset of lenses: <code>positions.png</code> / <code>positions_mge.png</code> (lensed source positions) and <code>source_near_lens_centre.png</code> / <code>source_near_lens_centre_mge.png</code> with <code>source_near_lens_centre.json</code>.</li>
+</ul>
+<h3><code>.fits</code> files (for each band: F115W, F150W, F277W, F444W)</h3>
+<ul>
+  <li><code>data.fits</code>: JWST imaging data.</li>
+  <li><code>noise_map.fits</code>: RMS noise map.</li>
+  <li><code>psf.fits</code>: point spread function (PSF).</li>
+  <li><code>psf_71x71.fits</code>: PSF on a larger 71&times;71 pixel grid (<code>psf_31x31.fits</code> is also present for a few lenses).</li>
+  <li><code>mask_extra_galaxies.fits</code>: mask removing extra galaxies from the data (most lenses).</li>
+  <li><code>result/</code>: PyAutoLens model outputs, e.g. <code>lens_light.fits</code>, <code>source_light.fits</code>, <code>source_reconstruction.fits</code> and <code>sie_model.results</code> (lenses with a model).</li>
+</ul>
+<h3>Metadata and results files</h3>
+<ul>
+  <li><code>info.json</code>: metadata (e.g. RA, Dec, lens redshift, primary waveband).</li>
+  <li><code>result.json</code>: PyAutoLens modeling results (lenses with a model).</li>
+  <li><code>positions.json</code>: lensed source positions used in modeling.</li>
+</ul>
+
+<h2 id="archival">Archival data</h2>
+<p>The folders <code>archive_space</code> and <code>archive_ground</code> inside each lens folder contain COSMOS archive data:</p>
+<ul>
+  <li><code>archive_space</code>: high-resolution data (e.g. HST F814W, MIRI F770W).</li>
+  <li><code>archive_ground</code>: ground-based data (e.g. HSC, UltraVISTA, IRAC).</li>
+</ul>
+<h3>Important considerations</h3>
+<ul>
+  <li><strong>Geometric alignment:</strong> archival data may have astrometric offsets and rotations relative to the JWST data.</li>
+  <li><strong>Noise maps:</strong> noise maps are instrument-specific and may require conversion to RMS noise values.</li>
+  <li><strong>Pixel scale conversion:</strong> pixel scales vary and must be extracted from the <code>.fits</code> headers.</li>
+</ul>
+
+<h2 id="primer">PRIMER</h2>
+<p>The <a href="https://primer-jwst.github.io">PRIMER survey</a> provides additional deep JWST and HST wavebands for a subset of 32 lenses. The file <code>primer.csv</code> lists these candidates (its <code>directory</code> column gives each lens folder), and the <code>primer/</code> folder in each of those lens folders contains the corresponding data.</p>
+<p>If you use PRIMER data, please cite Dunlop J. S., et al., 2021, <em>PRIMER: Public Release IMaging for Extragalactic Research</em>, JWST Proposal. Cycle 1, ID. #1837, and the official PRIMER data release paper if it is available.</p>
+
+<h2 id="physical-quantities">Physical quantities</h2>
+<h3>Geometry</h3>
+<p>A $(y,x)$ Cartesian coordinate system is established, centred on the light or mass profile:</p>
+<p>$$y_{\rm shift} = y - y_{\rm centre}, \quad x_{\rm shift} = x - x_{\rm centre}$$</p>
+<p>The shifted coordinates are then rotated by the position angle $\phi$, defined counter-clockwise from the positive x-axis:</p>
+<p>$$y_{\rm rot} = y_{\rm shift} \cos\phi - x_{\rm shift} \sin\phi, \quad x_{\rm rot} = y_{\rm shift} \sin\phi + x_{\rm shift} \cos\phi$$</p>
+<p>The rotated coordinates are converted to elliptical coordinates using the axis-ratio $q$ of the light or mass profile:</p>
+<p>$$\xi = \sqrt{x_{\rm rot}^2 + \frac{y_{\rm rot}^2}{q^2}}$$</p>
+<p>Instead of $\phi$ and $q$, the following &ldquo;elliptical components&rdquo; are used:</p>
+<p>$$\epsilon_{1} = \frac{1 - q}{1 + q} \sin 2\phi, \quad \epsilon_{2} = \frac{1 - q}{1 + q} \cos 2\phi$$</p>
+<p>To convert between these components and the position angle / axis-ratio:</p>
+<p>$$q = \frac{1 - {\rm fac}}{1 + {\rm fac}}, \quad \phi = \frac{1}{2} \arctan\left(\frac{\epsilon_{1}}{\epsilon_{2}}\right), \quad {\rm fac} = \sqrt{\epsilon_{1}^2 + \epsilon_{2}^2}$$</p>
+
+<h3>Mass model</h3>
+<p>The SIE lens mass model is defined by:</p>
+<p>$$\kappa(\xi) = \frac{1}{1 + q^{\rm mass}} \left( \frac{\theta^{\rm mass}_{\rm E}}{\xi} \right)$$</p>
+<p>where $\theta^{\rm mass}_{\rm E}$ is the Einstein radius of the mass model. This is a scaled Einstein radius used to improve modeling efficiency in PyAutoLens.</p>
+<p>The <strong>effective</strong> Einstein radius $R_{\rm Ein,eff}$, the definition more commonly used in the literature, is:</p>
+<p>$$R_{\rm Ein,eff} = \sqrt{\frac{A}{\pi}}$$</p>
+<p>where $A$ is the area enclosed by the tangential critical curve, ensuring consistency across different mass density profiles.</p>
+
+<h3>External shear</h3>
+<p>The external shear field is parameterized by two components $\gamma_{1}^{\rm ext}$ and $\gamma_{2}^{\rm ext}$. The magnitude and orientation are:</p>
+<p>$$\gamma^{\rm ext} = \sqrt{(\gamma_{1}^{\rm ext})^2 + (\gamma_{2}^{\rm ext})^2}, \quad \tan 2\phi^{\rm ext} = \frac{\gamma_{2}^{\rm ext}}{\gamma_{1}^{\rm ext}}$$</p>
+
+<h3>Magnitudes</h3>
+<p>For the MGE lens light and the Voronoi source reconstruction, see the papers and the PyAutoLens documentation for detailed descriptions of the profiles. Lens and source magnitudes are AB magnitudes:</p>
+<p>$$M_{\rm lens} = -2.5 \log_{10}(F_{\rm lens}) + Z, \qquad M_{\rm source} = -2.5 \log_{10}(F_{\rm source}) + Z$$</p>
+<p>where $F_{\rm lens}$ and $F_{\rm source}$ are the fluxes of the lens and source galaxies and $Z$ is the zero-point (the <code>zero_point</code> calibration of the data). The magnification factor $\mu$ is:</p>
+<p>$$\mu = \frac{F_{\rm source,\,image\text{-}plane}}{F_{\rm source}}$$</p>
+<p>where $F_{\rm source,\,image\text{-}plane}$ is the total flux of the lensed source galaxy in the image plane (i.e. magnified by the lens galaxy).</p>
+</article>
+</main>
+<footer><div class="wrap">COSMOS-Web Lens Survey (COWLS) public data release. Images and <code>.fits</code> files are served directly from the <a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a>. Lens modeling with <a href="https://github.com/Jammy2211/PyAutoLens">PyAutoLens</a>.</div></footer>
+</body>
+</html>
