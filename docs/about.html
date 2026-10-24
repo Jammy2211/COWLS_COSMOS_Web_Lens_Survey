@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About COWLS Data</title>
-<meta name="description" content="What is in the COWLS data release: catalogue columns, per-lens files, archival and PRIMER data, and the definitions of the physical quantities.">
+<meta name="description" content="What is in the COWLS data release: tiers, catalogue columns, per-lens files, archival and PRIMER data, and the definitions of the physical quantities.">
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js" crossorigin="anonymous"></script>
@@ -12,68 +12,82 @@
   onload="renderMathInElement(document.getElementById('prose'), {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body data-page="about">
-<header class="topbar"><div class="wrap"><a class="brand" href="index.html">COWLS</a><nav class="topnav" aria-label="Site"><a href="index.html">Gallery</a><a href="about.html">About the data</a><a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a></nav></div></header>
+<header class="topbar"><div class="wrap"><a class="brand" href="index.html">COWLS<span class="brand-full"> · COSMOS-Web Lens Survey</span></a><nav class="topnav" aria-label="Site"><a href="index.html">Gallery</a><a href="papers.html">Papers</a><a href="about.html" aria-current="page">About the data</a><a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a></nav></div></header>
 <main class="wrap">
 <article class="prose" id="prose">
 <h1 style="margin-top:24px">About the COWLS data</h1>
 <p>The data release lives in the <a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a>. Lenses are grouped into tier folders: <code>M25</code> (the 17 spectacular, confirmed lenses of COWLS&nbsp;II) and <code>S00</code>&ndash;<code>S12</code> (418 candidates, named by visual-inspection score). The catalogue also lists 5 <code>P18</code> rows: known lenses from prior work included in the catalogue for completeness; they have no COWLS data folder.</p>
 
+<h2 id="tiers">Tiers</h2>
+<p>The 17 lenses in <code>M25</code>, presented in COWLS&nbsp;II (Mahler et al. 2025), are all confirmed strong lenses with high signal-to-noise JWST imaging. The other candidates sit in folders named by the score the visual inspectors gave them:</p>
+<ul>
+  <li><strong><code>S10</code>&ndash;<code>S12</code>:</strong> very high-quality lens candidates.</li>
+  <li><strong><code>S07</code>&ndash;<code>S09</code>:</strong> high-quality lens candidates.</li>
+  <li><strong><code>S05</code>&ndash;<code>S06</code>:</strong> medium-quality lens candidates.</li>
+  <li><strong><code>S02</code>&ndash;<code>S04</code>:</strong> low-quality lens candidates.</li>
+  <li><strong><code>S00</code>&ndash;<code>S01</code>:</strong> very low-quality lens candidates.</li>
+</ul>
+<p>COWLS&nbsp;III (Hogg et al. 2025) predicts that the sample contains about 100 strong lenses. Without spectroscopic source redshifts, confirming a candidate can be hard, so when choosing candidates to work on, think about how your analysis can confirm that they are lenses.</p>
+
+<h2 id="modeling">PyAutoLens Lens Modeling</h2>
+<p>Every COWLS lens with a model in this release was fitted with <a href="https://github.com/Jammy2211/PyAutoLens">PyAutoLens</a>, an open-source Python package for strong-lens modeling, using a Multi-Gaussian Expansion for the lens light, an isothermal mass model with external shear and a pixelized source reconstruction. If you want to model these lenses yourself, the <a href="https://github.com/Jammy2211/autolens_workspace">autolens_workspace</a> has ready-to-run examples to get you started.</p>
+
 <h2 id="catalogue">Catalogue</h2>
 <p>The file <code>catalogue.csv</code> has 440 rows (435 candidates with a data folder plus the 5 <code>P18</code> lenses) and the following columns.</p>
 <h3>Basic information</h3>
 <ul>
-  <li><code>code</code>: unique identifier for the candidate.</li>
-  <li><code>score</code>: visual inspection score (the tier folder, e.g. <code>M25</code>, <code>S07</code>, <code>P18</code>).</li>
-  <li><code>ranking</code>: the individual visual-inspection grades behind the score.</li>
-  <li><code>ra</code>, <code>dec</code>: right ascension and declination of the candidate (degrees).</li>
+  <li><strong><code>code</code>:</strong> unique identifier for the candidate.</li>
+  <li><strong><code>score</code>:</strong> visual inspection score (the tier folder, e.g. <code>M25</code>, <code>S07</code>, <code>P18</code>).</li>
+  <li><strong><code>ranking</code>:</strong> the individual visual-inspection grades behind the score.</li>
+  <li><strong><code>ra</code>, <code>dec</code>:</strong> right ascension and declination of the candidate (degrees).</li>
 </ul>
 <h3>COSMOS-Web archival data (if available)</h3>
 <ul>
-  <li><code>lens_spec_z</code>: lens galaxy spectroscopic redshift.</li>
-  <li><code>lens_cw_photo_z_med</code>: lens galaxy photometric redshift.</li>
-  <li><code>lens_cw_stmass_med</code>: lens galaxy stellar mass, $\log_{10}(M_\star / M_\odot)$.</li>
+  <li><strong><code>lens_spec_z</code>:</strong> lens galaxy spectroscopic redshift.</li>
+  <li><strong><code>lens_cw_photo_z_med</code>:</strong> lens galaxy photometric redshift.</li>
+  <li><strong><code>lens_cw_stmass_med</code>:</strong> lens galaxy stellar mass, $\log_{10}(M_\star / M_\odot)$.</li>
 </ul>
 <h3>PyAutoLens modeling results</h3>
 <ul>
-  <li><code>einstein_radius</code>: Einstein radius of the candidate (arcsec).</li>
-  <li><code>F115W_lens_magnitude_ab</code>, <code>F150W_lens_magnitude_ab</code>, <code>F277W_lens_magnitude_ab</code>, <code>F444W_lens_magnitude_ab</code>: lens galaxy magnitudes.</li>
-  <li><code>F115W_source_magnitude_ab</code>, <code>F150W_source_magnitude_ab</code>, <code>F277W_source_magnitude_ab</code>, <code>F444W_source_magnitude_ab</code>: delensed source galaxy magnitudes.</li>
-  <li><code>F115W_magnification</code>, <code>F150W_magnification</code>, <code>F277W_magnification</code>, <code>F444W_magnification</code>: magnification factors.</li>
+  <li><strong><code>einstein_radius</code>:</strong> Einstein radius of the candidate (arcsec).</li>
+  <li><strong><code>F115W_lens_magnitude_ab</code>, <code>F150W_lens_magnitude_ab</code>, <code>F277W_lens_magnitude_ab</code>, <code>F444W_lens_magnitude_ab</code>:</strong> lens galaxy magnitudes.</li>
+  <li><strong><code>F115W_source_magnitude_ab</code>, <code>F150W_source_magnitude_ab</code>, <code>F277W_source_magnitude_ab</code>, <code>F444W_source_magnitude_ab</code>:</strong> delensed source galaxy magnitudes.</li>
+  <li><strong><code>F115W_magnification</code>, <code>F150W_magnification</code>, <code>F277W_magnification</code>, <code>F444W_magnification</code>:</strong> magnification factors.</li>
 </ul>
 
 <h2 id="lens-data">Individual lens data</h2>
 <p>Each candidate folder <code>&lt;tier&gt;/&lt;code&gt;/</code> contains:</p>
 <h3>Image files</h3>
 <ul>
-  <li><code>1_rgb_fit_summary.png</code>: RGB images, source reconstructions and lens-subtracted images (lenses with a model).</li>
-  <li><code>2_visual_first_round.jpeg</code>: image from the first round of visual inspection.</li>
-  <li><code>3_multi_wavelength_dataset.png</code>: image, masked image, lens-subtracted image, S/N map and source S/N map.</li>
-  <li><code>4_sie_fit.png</code>: lens model components inferred by PyAutoLens for all bands.</li>
-  <li><code>5_source_reconstruction.png</code>: delensed source reconstructions.</li>
-  <li><code>6_rgb.png</code>: RGB image of the candidate (every lens).</li>
-  <li>For a subset of lenses: <code>positions.png</code> / <code>positions_mge.png</code> (lensed source positions) and <code>source_near_lens_centre.png</code> / <code>source_near_lens_centre_mge.png</code> with <code>source_near_lens_centre.json</code>.</li>
+  <li><strong><code>1_rgb_fit_summary.png</code>:</strong> RGB images, source reconstructions and lens-subtracted images (lenses with a model).</li>
+  <li><strong><code>2_visual_first_round.jpeg</code>:</strong> image from the first round of visual inspection.</li>
+  <li><strong><code>3_multi_wavelength_dataset.png</code>:</strong> image, masked image, lens-subtracted image, S/N map and source S/N map.</li>
+  <li><strong><code>4_sie_fit.png</code>:</strong> lens model components inferred by PyAutoLens for all bands.</li>
+  <li><strong><code>5_source_reconstruction.png</code>:</strong> delensed source reconstructions.</li>
+  <li><strong><code>6_rgb.png</code>:</strong> RGB image of the candidate (every lens).</li>
+  <li><strong>For a subset of lenses:</strong> <code>positions.png</code> / <code>positions_mge.png</code> (lensed source positions) and <code>source_near_lens_centre.png</code> / <code>source_near_lens_centre_mge.png</code> with <code>source_near_lens_centre.json</code>.</li>
 </ul>
 <h3><code>.fits</code> files (for each band: F115W, F150W, F277W, F444W)</h3>
 <ul>
-  <li><code>data.fits</code>: JWST imaging data.</li>
-  <li><code>noise_map.fits</code>: RMS noise map.</li>
-  <li><code>psf.fits</code>: point spread function (PSF).</li>
-  <li><code>psf_71x71.fits</code>: PSF on a larger 71&times;71 pixel grid (<code>psf_31x31.fits</code> is also present for a few lenses).</li>
-  <li><code>mask_extra_galaxies.fits</code>: mask removing extra galaxies from the data (most lenses).</li>
-  <li><code>result/</code>: PyAutoLens model outputs, e.g. <code>lens_light.fits</code>, <code>source_light.fits</code>, <code>source_reconstruction.fits</code> and <code>sie_model.results</code> (lenses with a model).</li>
+  <li><strong><code>data.fits</code>:</strong> JWST imaging data.</li>
+  <li><strong><code>noise_map.fits</code>:</strong> RMS noise map.</li>
+  <li><strong><code>psf.fits</code>:</strong> point spread function (PSF).</li>
+  <li><strong><code>psf_71x71.fits</code>:</strong> PSF on a larger 71&times;71 pixel grid (<code>psf_31x31.fits</code> is also present for a few lenses).</li>
+  <li><strong><code>mask_extra_galaxies.fits</code>:</strong> mask removing extra galaxies from the data (most lenses).</li>
+  <li><strong><code>result/</code>:</strong> PyAutoLens model outputs, e.g. <code>lens_light.fits</code>, <code>source_light.fits</code>, <code>source_reconstruction.fits</code> and <code>sie_model.results</code> (lenses with a model).</li>
 </ul>
 <h3>Metadata and results files</h3>
 <ul>
-  <li><code>info.json</code>: metadata (e.g. RA, Dec, lens redshift, primary waveband).</li>
-  <li><code>result.json</code>: PyAutoLens modeling results (lenses with a model).</li>
-  <li><code>positions.json</code>: lensed source positions used in modeling.</li>
+  <li><strong><code>info.json</code>:</strong> metadata (e.g. RA, Dec, lens redshift, primary waveband).</li>
+  <li><strong><code>result.json</code>:</strong> PyAutoLens modeling results (lenses with a model).</li>
+  <li><strong><code>positions.json</code>:</strong> lensed source positions used in modeling.</li>
 </ul>
 
 <h2 id="archival">Archival data</h2>
 <p>The folders <code>archive_space</code> and <code>archive_ground</code> inside each lens folder contain COSMOS archive data:</p>
 <ul>
-  <li><code>archive_space</code>: high-resolution data (e.g. HST F814W, MIRI F770W).</li>
-  <li><code>archive_ground</code>: ground-based data (e.g. HSC, UltraVISTA, IRAC).</li>
+  <li><strong><code>archive_space</code>:</strong> high-resolution data (e.g. HST F814W, MIRI F770W).</li>
+  <li><strong><code>archive_ground</code>:</strong> ground-based data (e.g. HSC, UltraVISTA, IRAC).</li>
 </ul>
 <h3>Important considerations</h3>
 <ul>
@@ -81,10 +95,23 @@
   <li><strong>Noise maps:</strong> noise maps are instrument-specific and may require conversion to RMS noise values.</li>
   <li><strong>Pixel scale conversion:</strong> pixel scales vary and must be extracted from the <code>.fits</code> headers.</li>
 </ul>
+<p>The COWLS team is working on scripts for noise-map calculation and pixel-scale determination. Contributions from the community are welcome.</p>
 
 <h2 id="primer">PRIMER</h2>
 <p>The <a href="https://primer-jwst.github.io">PRIMER survey</a> provides additional deep JWST and HST wavebands for a subset of 32 lenses. The file <code>primer.csv</code> lists these candidates (its <code>directory</code> column gives each lens folder), and the <code>primer/</code> folder in each of those lens folders contains the corresponding data.</p>
 <p>If you use PRIMER data, please cite Dunlop J. S., et al., 2021, <em>PRIMER: Public Release IMaging for Extragalactic Research</em>, JWST Proposal. Cycle 1, ID. #1837, and the official PRIMER data release paper if it is available.</p>
+
+<h2 id="using">Using COWLS data</h2>
+<p>If you are using COWLS data in your research, please contact the COSMOS-Web Lensing Science Working Group to coordinate and avoid duplicated work; collaboration helps everyone get the most from the sample. Please cite the three survey papers (see <a href="papers.html#citing">Citing COWLS</a>).</p>
+<p><strong>Found a JWST lens?</strong> COSMOS-Web covers just 0.54&nbsp;deg², a small fraction of the NIRCam imaging JWST has taken. If you have found other JWST strong-lens candidates you would like to share with the community, get in touch with the COWLS team and we will work on adding them to this repository.</p>
+
+<h2 id="science-goals">Science goals</h2>
+<ul>
+  <li><strong>Highest-redshift source galaxies:</strong> probing sources at $z &gt; 6$, giving insight into the epoch of reionization.</li>
+  <li><strong>Highest-redshift lens galaxies:</strong> many lenses are at $z &gt; 1$, some beyond $z &gt; 2$.</li>
+  <li><strong>Cosmology with strong and weak lensing:</strong> using the contiguous 0.54&nbsp;deg² field for precise cosmic-shear measurements.</li>
+  <li><strong>Supermassive black holes:</strong> detecting the influence of supermassive black holes on lensing signals.</li>
+</ul>
 
 <h2 id="physical-quantities">Physical quantities</h2>
 <h3>Geometry</h3>
