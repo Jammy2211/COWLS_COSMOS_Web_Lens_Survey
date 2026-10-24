@@ -64,6 +64,23 @@
     });
   }
 
+  // Papers are optional extras: a missing or broken papers.json must never
+  // stop the gallery or a lens page from rendering, so callers catch.
+  function loadPapers() {
+    return fetch("data/papers.json").then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status + " loading data/papers.json");
+      return res.json();
+    });
+  }
+
+  function paperTitle(p) {
+    return (p.label ? p.label + ": " : "") + p.title;
+  }
+
+  function paperByline(p) {
+    return p.authors + " " + p.year + (p.journal ? ", " + p.journal : "");
+  }
+
   function storageGet(k) { try { return window.sessionStorage.getItem(k); } catch (e) { return null; } }
   function storageSet(k, v) { try { window.sessionStorage.setItem(k, v); } catch (e) { /* ignore */ } }
 
@@ -291,7 +308,26 @@
 
   /* ---------- lens page ---------- */
 
-  function initLens(data) {
+  function lensPapersSection(r, papers) {
+    var hits = [];
+    ((papers && papers.papers) || []).forEach(function (p) {
+      (p.lenses || []).forEach(function (l) {
+        if (l.code === r.code) hits.push({ paper: p, role: l.role });
+      });
+    });
+    if (!hits.length) return null;
+    return el("section", { class: "block" }, [
+      el("h2", { text: "Papers on this lens" }),
+      el("ul", { class: "lens-papers" }, hits.map(function (h) {
+        return el("li", {}, [
+          el("a", { href: "papers.html#" + h.paper.id, text: paperTitle(h.paper) }),
+          el("div", { class: "muted" }, [h.paper.authors + " " + h.paper.year + (h.role ? " · " + h.role : "")])
+        ]);
+      }))
+    ]);
+  }
+
+  function initLens(data, papers) {
     var out = document.getElementById("lens");
     var params = new URLSearchParams(location.search);
     var code = (params.get("code") || "").replace(/ /g, "+").trim();
@@ -369,6 +405,8 @@
         "), included in the catalogue for completeness. It has no COWLS data folder."
       ]));
       out.appendChild(metaPanel);
+      var p18Papers = lensPapersSection(r, papers);
+      if (p18Papers) out.appendChild(p18Papers);
       return;
     }
 
@@ -379,6 +417,9 @@
       ]) : el("div", { class: "panel muted", text: "No RGB image." }),
       metaPanel
     ]));
+
+    var papersBlock = lensPapersSection(r, papers);
+    if (papersBlock) out.appendChild(papersBlock);
 
     // Per-band results
     var bands = data.bands.filter(function (b) { return r.bands[b]; });
@@ -441,14 +482,81 @@
     ]));
   }
 
+  /* ---------- papers page ---------- */
+
+  function initPapers(papers, data) {
+    var out = document.getElementById("papers");
+    var byCode = {};
+    ((data && data.lenses) || []).forEach(function (r) { byCode[r.code] = r; });
+
+    function paperLinks(p) {
+      var links = [];
+      if (p.arxiv) links.push(el("a", { href: "https://arxiv.org/abs/" + p.arxiv, text: "arXiv:" + p.arxiv }));
+      if (p.doi) links.push(el("a", { href: "https://doi.org/" + p.doi, text: "DOI" }));
+      if (p.ads) links.push(el("a", { href: /^https?:/.test(p.ads) ? p.ads : "https://ui.adsabs.harvard.edu/abs/" + encodeURIComponent(p.ads), text: "ADS" }));
+      return links.length ? el("div", { class: "links" }, links) : null;
+    }
+
+    // A lens with a data folder gets an RGB thumbnail; one without (P18) a text link.
+    function lensChip(l) {
+      var r = byCode[l.code];
+      if (!r || !r.has_folder) {
+        return el("a", { class: "paper-lens text", href: lensUrl(l.code) }, [l.code + (l.role ? " (" + l.role + ")" : "")]);
+      }
+      return el("a", { class: "paper-lens", href: lensUrl(l.code), title: l.code + " (" + r.tier + ")" }, [
+        el("img", { src: rawUrl(r, "6_rgb.png"), alt: "RGB image of " + l.code, loading: "lazy", decoding: "async", width: "72", height: "72" }),
+        // Zero-width space lets the code wrap at the "+" rather than mid-number.
+        el("span", { class: "code", text: l.code.replace("+", "\u200b+") }),
+        l.role ? el("span", { class: "role", text: l.role }) : null
+      ]);
+    }
+
+    out.textContent = "";
+    papers.sections.forEach(function (s) {
+      var list = papers.papers.filter(function (p) { return p.section === s.id; });
+      if (!list.length) return;
+      out.appendChild(el("section", { class: "paper-section", id: s.id }, [
+        el("h2", { text: s.title }),
+        s.intro ? el("p", { text: s.intro }) : null
+      ].concat(list.map(function (p) {
+        var lenses = p.lenses || [];
+        return el("article", { class: "paper", id: p.id }, [
+          el("h3", {}, [p.label ? el("span", { class: "label", text: p.label }) : null, p.title]),
+          el("p", { class: "byline", text: paperByline(p) }),
+          paperLinks(p),
+          p.summary ? el("p", { class: "summary", text: p.summary }) : null,
+          lenses.length ? el("div", { class: "paper-lenses" }, lenses.map(lensChip)) : null
+        ]);
+      }))));
+    });
+
+    // Content arrives after load, so re-apply any #paper-id anchor by hand.
+    if (location.hash) {
+      var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) target.scrollIntoView();
+    }
+  }
+
   /* ---------- boot ---------- */
 
   document.addEventListener("DOMContentLoaded", function () {
     var page = document.body.getAttribute("data-page");
+    if (page === "papers") {
+      // Thumbnails need lenses.json, but the paper list renders without it.
+      var box = document.getElementById("papers");
+      Promise.all([loadPapers(), loadData().catch(function () { return null; })]).then(function (res) {
+        initPapers(res[0], res[1]);
+      }).catch(function (err) {
+        box.textContent = "";
+        box.appendChild(el("p", { class: "notice", text: "Could not load the paper list: " + err.message }));
+      });
+      return;
+    }
     if (page !== "index" && page !== "lens") return;
     var container = document.getElementById(page === "index" ? "results" : "lens");
-    loadData().then(function (data) {
-      if (page === "index") initIndex(data); else initLens(data);
+    var papers = page === "lens" ? loadPapers().catch(function () { return null; }) : Promise.resolve(null);
+    Promise.all([loadData(), papers]).then(function (res) {
+      if (page === "index") initIndex(res[0]); else initLens(res[0], res[1]);
     }).catch(function (err) { showError(container, err); });
   });
 })();

@@ -1,0 +1,774 @@
+{
+  "sections": [
+    {
+      "id": "cowls",
+      "title": "COWLS survey papers",
+      "intro": "The three papers that present the COWLS sample. They cover every lens in this release."
+    },
+    {
+      "id": "sample",
+      "title": "Papers using the COWLS sample",
+      "intro": "Work by other groups that uses the COWLS catalogue or images as a whole, for example to train a lens finder or to compare with another lens search."
+    },
+    {
+      "id": "lens",
+      "title": "Papers on individual COWLS lenses",
+      "intro": "Studies of specific COWLS lenses. The thumbnails link to each lens's page."
+    },
+    {
+      "id": "prior_lens",
+      "title": "Earlier work on COWLS lenses",
+      "intro": "Papers that studied a lens before it was catalogued by COWLS, or independently of it."
+    },
+    {
+      "id": "prior_search",
+      "title": "Earlier strong-lens searches in COSMOS",
+      "intro": "Strong-lens searches in the COSMOS field that came before COWLS, mostly in HST imaging. Where COWLS credits a search with first finding a lens, its thumbnail is shown."
+    }
+  ],
+  "papers": [
+    {
+      "id": "nightingale2025",
+      "section": "cowls",
+      "label": "COWLS I",
+      "title": "The COSMOS-Web Lens Survey (COWLS) I: Discovery of >100 high redshift strong lenses in contiguous JWST imaging",
+      "authors": "Nightingale et al.",
+      "year": 2025,
+      "journal": "MNRAS 543, 203-222",
+      "doi": "10.1093/mnras/staf1253",
+      "arxiv": "2503.08777",
+      "ads": null,
+      "summary": "Presents the COWLS catalogue of over 400 lens candidates, more than 100 of them high confidence, found by eye in COSMOS-Web JWST imaging, together with their lens models and this data release.",
+      "lenses": []
+    },
+    {
+      "id": "mahler2025",
+      "section": "cowls",
+      "label": "COWLS II",
+      "title": "The COSMOS-Web Lens Survey (COWLS) II: depth, resolution, and NIR coverage from JWST reveal 17 spectacular lenses",
+      "authors": "Mahler et al.",
+      "year": 2025,
+      "journal": "MNRAS Letters 544, L8-L14",
+      "doi": "10.1093/mnrasl/slaf088",
+      "arxiv": "2503.08782",
+      "ads": null,
+      "summary": "Presents the 17 most spectacular COWLS lenses (the M25 tier) and shows what JWST's depth, sharpness and near-infrared coverage reveal in them.",
+      "lenses": []
+    },
+    {
+      "id": "hogg2025",
+      "section": "cowls",
+      "label": "COWLS III",
+      "title": "The COSMOS-Web Lens Survey (COWLS) III: forecasts versus data",
+      "authors": "Hogg et al.",
+      "year": 2025,
+      "journal": "MNRAS 544, 782-798",
+      "doi": "10.1093/mnras/staf1678",
+      "arxiv": "2503.08785",
+      "ads": null,
+      "summary": "Compares forecasts of how many lenses COSMOS-Web should contain, and what they should look like, with the lenses COWLS actually found.",
+      "lenses": []
+    },
+    {
+      "id": "dima2026",
+      "section": "sample",
+      "title": "High-Redshift Gravitational Lens Discoveries in JWST NIRCam Using AnomalyMatch",
+      "authors": "Dima et al.",
+      "year": 2026,
+      "journal": null,
+      "doi": null,
+      "arxiv": "2605.03442",
+      "ads": null,
+      "summary": "Trains the AnomalyMatch machine-learning lens finder on 11 of the COWLS II lenses, then searches JWST imaging for new lenses and finds 58, several of which are COWLS candidates.",
+      "lenses": [
+        {
+          "code": "COSJ095917+015424",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ095921+020638",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ095950+022057",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ095953+023319",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ100013+023424",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ100018+022138",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ100024+015334",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ100025+015245",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ100028+021928",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ100047+015023",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ100119+014849",
+          "role": "training set"
+        },
+        {
+          "code": "COSJ095912+020750",
+          "role": "recovered"
+        },
+        {
+          "code": "COSJ095914+021219",
+          "role": "recovered"
+        },
+        {
+          "code": "COSJ095924+020807",
+          "role": "recovered"
+        },
+        {
+          "code": "COSJ095940+023253",
+          "role": "recovered"
+        },
+        {
+          "code": "COSJ100004+015307",
+          "role": "recovered"
+        },
+        {
+          "code": "COSJ100011+021301",
+          "role": "recovered"
+        },
+        {
+          "code": "COSJ100024+021749",
+          "role": "recovered"
+        },
+        {
+          "code": "COSJ100044+021508",
+          "role": "recovered"
+        },
+        {
+          "code": "COSJ100113+020321",
+          "role": "recovered"
+        }
+      ]
+    },
+    {
+      "id": "vizgan2026",
+      "section": "sample",
+      "title": "JWST's PEARLS: A clumpy ring galaxy at z = 4.0148",
+      "authors": "Vizgan et al.",
+      "year": 2026,
+      "journal": "ApJ 1004, 114",
+      "doi": "10.3847/1538-4357/ae7103",
+      "arxiv": "2603.11575",
+      "ads": null,
+      "summary": "Uses the Einstein radii of the COWLS candidates to test whether a ring-shaped galaxy at redshift 4 could be a lens.",
+      "lenses": []
+    },
+    {
+      "id": "ferrami2025",
+      "section": "sample",
+      "title": "Galaxy-scale lens search in the PEARLS NEP TDF and CEERS JWST fields",
+      "authors": "Ferrami et al.",
+      "year": 2025,
+      "journal": "MNRAS 545 (2)",
+      "doi": "10.1093/mnras/staf1991",
+      "arxiv": "2505.17318",
+      "ads": null,
+      "summary": "Searches two other JWST fields for galaxy-scale lenses and compares their redshifts and Einstein radii with the COWLS catalogue.",
+      "lenses": []
+    },
+    {
+      "id": "yang2025",
+      "section": "lens",
+      "title": "Unveiling a Population of Strong Galaxy-Galaxy Lensed Faint Dusty Star-Forming Galaxies",
+      "authors": "Yang et al.",
+      "year": 2025,
+      "journal": "ApJL 990, L38",
+      "doi": "10.3847/2041-8213/adfa88",
+      "arxiv": "2506.11601",
+      "ads": null,
+      "summary": "Finds 18 lensed, faint, dusty star-forming galaxies in COSMOS-Web; nine are COWLS lenses, and their magnifications broadly agree with the COWLS values.",
+      "lenses": [
+        {
+          "code": "COSJ100024+015334"
+        },
+        {
+          "code": "COSJ095939+023239"
+        },
+        {
+          "code": "COSJ100013+023424"
+        },
+        {
+          "code": "COSJ095917+015424"
+        },
+        {
+          "code": "COSJ100024+021749"
+        },
+        {
+          "code": "COSJ100050+022118"
+        },
+        {
+          "code": "COSJ100028+021731"
+        },
+        {
+          "code": "COSJ100013+022023"
+        },
+        {
+          "code": "COSJ100028+021928"
+        }
+      ]
+    },
+    {
+      "id": "melia2025",
+      "section": "prior_lens",
+      "title": "The lens mass in the Einstein ring JWST-ER1",
+      "authors": "Melia",
+      "year": 2025,
+      "journal": "Astronomische Nachrichten 346, e20240144",
+      "doi": "10.1002/asna.20240144",
+      "arxiv": "2503.09607",
+      "ads": null,
+      "summary": "Reinterprets the mass of the JWST-ER1 lens (the COSMOS-Web ring) from earlier published measurements.",
+      "lenses": [
+        {
+          "code": "COSJ100024+015334",
+          "role": "COSMOS-Web ring"
+        }
+      ]
+    },
+    {
+      "id": "shuntov2025",
+      "section": "prior_lens",
+      "title": "The COSMOS-Web ring: Spectroscopic confirmation of the background source at z = 5.1",
+      "authors": "Shuntov et al.",
+      "year": 2025,
+      "journal": "A&A 696, L14",
+      "doi": "10.1051/0004-6361/202554273",
+      "arxiv": "2502.20136",
+      "ads": null,
+      "summary": "Measures the redshift of the galaxy lensed into the COSMOS-Web ring with spectroscopy, placing it at z = 5.1.",
+      "lenses": [
+        {
+          "code": "COSJ100024+015334",
+          "role": "COSMOS-Web ring"
+        }
+      ]
+    },
+    {
+      "id": "mercier2024",
+      "section": "prior_lens",
+      "title": "The COSMOS-Web ring: in-depth characterization of an Einstein ring lensing system at z~2",
+      "authors": "Mercier et al.",
+      "year": 2024,
+      "journal": "A&A 687, A61",
+      "doi": "10.1051/0004-6361/202348095",
+      "arxiv": "2309.15986",
+      "ads": null,
+      "summary": "A detailed study and lens model of the COSMOS-Web ring.",
+      "lenses": [
+        {
+          "code": "COSJ100024+015334",
+          "role": "COSMOS-Web ring"
+        }
+      ]
+    },
+    {
+      "id": "moore2024",
+      "section": "prior_lens",
+      "title": "A Radio Galaxy Gravitational Lens in the COSMOS-Web Survey",
+      "authors": "Moore & Lacy",
+      "year": 2024,
+      "journal": "RNAAS 8(3), 62",
+      "doi": "10.3847/2515-5172/ad2fa6",
+      "arxiv": null,
+      "ads": null,
+      "summary": "A short research note on a lens whose lensing galaxy is a radio galaxy, seen in COSMOS-Web imaging.",
+      "lenses": [
+        {
+          "code": "COSJ095914+021219"
+        }
+      ]
+    },
+    {
+      "id": "kong2024",
+      "section": "prior_lens",
+      "title": "CDM and SIDM Interpretations of the Strong Gravitational Lensing Object JWST-ER1",
+      "authors": "Kong et al.",
+      "year": 2024,
+      "journal": "ApJL 965, L19",
+      "doi": "10.3847/2041-8213/ad394b",
+      "arxiv": "2402.15840",
+      "ads": null,
+      "summary": "Asks whether the mass of the JWST-ER1 lens can be explained by cold or self-interacting dark matter.",
+      "lenses": [
+        {
+          "code": "COSJ100024+015334",
+          "role": "COSMOS-Web ring"
+        }
+      ]
+    },
+    {
+      "id": "vandokkum2023",
+      "section": "prior_lens",
+      "title": "A massive compact quiescent galaxy at z=2 with a complete Einstein ring in JWST imaging",
+      "authors": "van Dokkum et al.",
+      "year": 2024,
+      "journal": "Nature Astronomy 8, 119-125",
+      "doi": "10.1038/s41550-023-02103-9",
+      "arxiv": "2309.07969",
+      "ads": null,
+      "summary": "Discovers JWST-ER1, a complete Einstein ring around a compact galaxy at redshift 2, in COSMOS-Web imaging.",
+      "lenses": [
+        {
+          "code": "COSJ100024+015334",
+          "role": "COSMOS-Web ring"
+        }
+      ]
+    },
+    {
+      "id": "jin2024",
+      "section": "prior_lens",
+      "title": "A photo-z cautionary tale: Redshift confirmation of COSBO-7 at z=2.625",
+      "authors": "Jin et al.",
+      "year": 2024,
+      "journal": "A&A 690, L16",
+      "doi": "10.1051/0004-6361/202451445",
+      "arxiv": "2407.07585",
+      "ads": null,
+      "summary": "Spectroscopic redshift (z=2.625) of the strongly lensed dusty galaxy COSBO-7.",
+      "lenses": [
+        {
+          "code": "COSJ100024+021749",
+          "role": "COSBO-7"
+        }
+      ]
+    },
+    {
+      "id": "maeder2024",
+      "section": "prior_lens",
+      "title": "A Survey of Dynamical and Gravitational Lensing Tests in Scale Invariance: The Fall of Dark Matter?",
+      "authors": "Maeder & Courbin",
+      "year": 2024,
+      "journal": "Symmetry 16, 1420",
+      "doi": "10.3390/sym16111420",
+      "arxiv": "2410.21379",
+      "ads": null,
+      "summary": "Review of scale-invariant gravity tests, with a section (6.3) treating JWST-ER1's lensing-to-stellar mass excess without dark matter.",
+      "lenses": [
+        {
+          "code": "COSJ100024+015334",
+          "role": "COSMOS-Web ring"
+        }
+      ]
+    },
+    {
+      "id": "pearson2023",
+      "section": "prior_lens",
+      "title": "A large population of strongly lensed faint submillimetre galaxies in future dark energy surveys inferred from JWST imaging",
+      "authors": "Pearson et al.",
+      "year": 2023,
+      "journal": "MNRAS 527, 12044-12052",
+      "doi": "10.1093/mnras/stad3916",
+      "arxiv": "2309.00888",
+      "ads": null,
+      "summary": "JWST discovery of a z~3.4 submm galaxy lensed by a z=0.36 galaxy in COSMOS.",
+      "lenses": [
+        {
+          "code": "COSJ100024+021749",
+          "role": "COSBO-7"
+        }
+      ]
+    },
+    {
+      "id": "kuhn2021",
+      "section": "prior_lens",
+      "title": "Combining strong and weak lensing estimates in the Cosmos field",
+      "authors": "Kuhn et al.",
+      "year": 2021,
+      "journal": "JCAP 2021(04), 010",
+      "doi": "10.1088/1475-7516/2021/04/010",
+      "arxiv": "2010.08680",
+      "ads": null,
+      "summary": "Line-of-sight shear from modelling COSMOS lensed arcs (COSMOS 0038+4133, 5758+1525, 5921+0638) combined with cosmic shear.",
+      "lenses": [
+        {
+          "code": "COSJ095921+020638",
+          "role": "COSMOS 5921+0638"
+        }
+      ]
+    },
+    {
+      "id": "wong2018",
+      "section": "prior_lens",
+      "title": "Survey of Gravitationally-lensed Objects in HSC Imaging (SuGOHI). II. Environments and Line-of-Sight Structure of Strong Gravitational Lens Galaxies to z ~ 0.8",
+      "authors": "Wong et al.",
+      "year": 2018,
+      "journal": "ApJ",
+      "doi": "10.3847/1538-4357/aae381",
+      "arxiv": "1809.07341",
+      "ads": null,
+      "summary": "Environment and line-of-sight analysis of known lenses in HSC, including several COSMOS lenses.",
+      "lenses": [
+        {
+          "code": "COSJ095921+020638",
+          "role": "COSMOS 5921+0638"
+        },
+        {
+          "code": "COSJ095939+023043"
+        },
+        {
+          "code": "COSJ100012+022015"
+        },
+        {
+          "code": "COSJ100047+015023"
+        }
+      ]
+    },
+    {
+      "id": "sonnenfeld2015",
+      "section": "prior_lens",
+      "title": "The SL2S Galaxy-scale Lens Sample. V. Dark Matter Halos and Stellar IMF of Massive Early-type Galaxies out to Redshift 0.8",
+      "authors": "Sonnenfeld et al.",
+      "year": 2015,
+      "journal": "ApJ 800, 94",
+      "doi": "10.1088/0004-637X/800/2/94",
+      "arxiv": "1410.1881",
+      "ads": null,
+      "summary": "Dark-matter halo and IMF analysis of the SL2S sample, including SL2SJ095921+020638.",
+      "lenses": [
+        {
+          "code": "COSJ095921+020638",
+          "role": "COSMOS 5921+0638"
+        }
+      ]
+    },
+    {
+      "id": "sonnenfeld2013",
+      "section": "prior_lens",
+      "title": "The SL2S Galaxy-scale Lens Sample. III. Lens Models, Surface Photometry and Stellar Masses for the final sample",
+      "authors": "Sonnenfeld et al.",
+      "year": 2013,
+      "journal": "ApJ 777, 97",
+      "doi": "10.1088/0004-637X/777/2/97",
+      "arxiv": "1307.4764",
+      "ads": null,
+      "summary": "Lens models and stellar masses for the SL2S galaxy-scale sample, which includes SL2SJ095921+020638.",
+      "lenses": [
+        {
+          "code": "COSJ095921+020638",
+          "role": "COSMOS 5921+0638"
+        }
+      ]
+    },
+    {
+      "id": "sonnenfeld2013b",
+      "section": "prior_lens",
+      "title": "The SL2S Galaxy-scale Lens Sample. IV. The dependence of the total mass density profile of early-type galaxies on redshift, stellar mass, and size",
+      "authors": "Sonnenfeld et al.",
+      "year": 2013,
+      "journal": "ApJ 777, 98",
+      "doi": "10.1088/0004-637X/777/2/98",
+      "arxiv": "1307.4759",
+      "ads": null,
+      "summary": "Density-slope analysis of the SL2S sample, including SL2SJ095921+020638.",
+      "lenses": [
+        {
+          "code": "COSJ095921+020638",
+          "role": "COSMOS 5921+0638"
+        }
+      ]
+    },
+    {
+      "id": "vanderwel2013",
+      "section": "prior_lens",
+      "title": "Discovery of a Quadruple Lens in CANDELS with a Record Lens Redshift z=1.53",
+      "authors": "van der Wel et al.",
+      "year": 2013,
+      "journal": "ApJL 777, L17",
+      "doi": "10.1088/2041-8205/777/1/L17",
+      "arxiv": "1309.2826",
+      "ads": null,
+      "summary": "Discovery of the z=1.53 quadruple lens in CANDELS/COSMOS with LBT spectroscopy of the z=3.42 source.",
+      "lenses": [
+        {
+          "code": "COSJ100018+022138"
+        }
+      ]
+    },
+    {
+      "id": "faure2011",
+      "section": "prior_lens",
+      "title": "On the evolution of environmental and mass properties of strong lens galaxies in COSMOS",
+      "authors": "Faure et al.",
+      "year": 2011,
+      "journal": "A&A 529, A72",
+      "doi": "10.1051/0004-6361/200913498",
+      "arxiv": "1009.1545",
+      "ads": null,
+      "summary": "Environment and dark-matter fraction of the 20 COSMOS multiple-image lenses, with new redshifts.",
+      "lenses": [
+        {
+          "code": "COSJ095914+021219"
+        },
+        {
+          "code": "COSJ095921+020638",
+          "role": "COSMOS 5921+0638"
+        },
+        {
+          "code": "COSJ100012+022015"
+        },
+        {
+          "code": "COSJ100047+015023"
+        },
+        {
+          "code": "COSJ095857+015949"
+        }
+      ]
+    },
+    {
+      "id": "anguita2009",
+      "section": "prior_lens",
+      "title": "COSMOS 5921+0638: Characterization and analysis of a new strong gravitationally lensed AGN",
+      "authors": "Anguita et al.",
+      "year": 2009,
+      "journal": "A&A 507, 35-46",
+      "doi": "10.1051/0004-6361/200912091",
+      "arxiv": "0907.4145",
+      "ads": null,
+      "summary": "VLT spectroscopy, HST imaging and mass modelling of the quadruply lensed AGN COSMOS 5921+0638.",
+      "lenses": [
+        {
+          "code": "COSJ095921+020638",
+          "role": "COSMOS 5921+0638"
+        }
+      ]
+    },
+    {
+      "id": "garvin2022",
+      "section": "prior_search",
+      "title": "Hubble Asteroid Hunter: II. Identifying strong gravitational lenses in HST images with crowdsourcing",
+      "authors": "Garvin et al.",
+      "year": 2022,
+      "journal": "A&A 667, A141",
+      "doi": "10.1051/0004-6361/202243745",
+      "arxiv": "2207.06997",
+      "ads": null,
+      "summary": "Citizen-science search of archival HST images for serendipitous strong lenses, including COSMOS pointings.",
+      "lenses": []
+    },
+    {
+      "id": "chan2020",
+      "section": "prior_search",
+      "title": "Survey of Gravitationally-lensed Objects in HSC Imaging (SuGOHI). IV. Lensed quasar search in the HSC survey",
+      "authors": "Chan et al.",
+      "year": 2020,
+      "journal": "A&A",
+      "doi": "10.1051/0004-6361/201937030",
+      "arxiv": "1911.02587",
+      "ads": null,
+      "summary": "HSC-SSP lensed-quasar search that re-found the known COSMOS quad HSCJ095921+020638.",
+      "lenses": []
+    },
+    {
+      "id": "jaelani2020",
+      "section": "prior_search",
+      "title": "Survey of Gravitationally-lensed Objects in HSC Imaging (SuGOHI). V. Group-to-cluster scale lens search from the HSC-SSP Survey",
+      "authors": "Jaelani et al.",
+      "year": 2020,
+      "journal": "MNRAS",
+      "doi": "10.1093/mnras/staa1062",
+      "arxiv": "2002.01611",
+      "ads": null,
+      "summary": "HSC-SSP group/cluster-scale lens search; lists HSC J0959+0219D, grade A.",
+      "lenses": []
+    },
+    {
+      "id": "pourrahmani2018",
+      "section": "prior_search",
+      "title": "LensFlow: A Convolutional Neural Network in Search of Strong Gravitational Lenses",
+      "authors": "Pourrahmani et al.",
+      "year": 2018,
+      "journal": "ApJ 856, 68",
+      "doi": "10.3847/1538-4357/aaae6a",
+      "arxiv": "1705.05857",
+      "ads": null,
+      "summary": "Machine-learning (CNN) search of the HST COSMOS imaging that presented 92 lens candidates.",
+      "lenses": [
+        {
+          "code": "COSJ095950+022057",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ100028+021600",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ095943+022829",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ095939+023043",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ095934+020633",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ095925+020643",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ100022+021801",
+          "role": "discovered"
+        }
+      ]
+    },
+    {
+      "id": "jin2018",
+      "section": "prior_search",
+      "title": "\"Super-deblended\" Dust Emission in Galaxies: II. Far-IR to (sub)millimeter photometry and high redshift galaxy candidates in the full COSMOS field",
+      "authors": "Jin et al.",
+      "year": 2018,
+      "journal": "ApJ 864, 56",
+      "doi": "10.3847/1538-4357/aad4af",
+      "arxiv": "1807.04697",
+      "ads": null,
+      "summary": "Super-deblended far-IR/submm COSMOS catalogue that identified strongly lensed submm galaxy candidates.",
+      "lenses": [
+        {
+          "code": "COSJ100024+021749",
+          "role": "discovered"
+        }
+      ]
+    },
+    {
+      "id": "more2012",
+      "section": "prior_search",
+      "title": "The CFHTLS-Strong Lensing Legacy Survey (SL2S): Investigating the group-scale lenses with the SARCS sample",
+      "authors": "More et al.",
+      "year": 2012,
+      "journal": "ApJ 749, 38",
+      "doi": "10.1088/0004-637X/749/1/38",
+      "arxiv": "1109.1821",
+      "ads": null,
+      "summary": "Ground-based CFHTLS arc search (SARCS sample) that includes COSMOS-field lenses.",
+      "lenses": [
+        {
+          "code": "COSJ095955+021900",
+          "role": "discovered"
+        }
+      ]
+    },
+    {
+      "id": "aretxaga2011",
+      "section": "prior_search",
+      "title": "AzTEC millimetre survey of the COSMOS field - III. Source catalogue over 0.72 sq. deg. and plausible boosting by large-scale structure",
+      "authors": "Aretxaga et al.",
+      "year": 2011,
+      "journal": "MNRAS 415, 3831-3850",
+      "doi": "10.1111/j.1365-2966.2011.18989.x",
+      "arxiv": "1105.0890",
+      "ads": null,
+      "summary": "AzTEC 1.1 mm COSMOS survey whose source-count excess flagged lensing candidates.",
+      "lenses": []
+    },
+    {
+      "id": "faure2009",
+      "section": "prior_search",
+      "title": "On the contribution of large scale structure to strong gravitational lensing",
+      "authors": "Faure et al.",
+      "year": 2009,
+      "journal": "ApJ 695, 1233-1243",
+      "doi": "10.1088/0004-637X/695/2/1233",
+      "arxiv": "0810.4838",
+      "ads": null,
+      "summary": "Correlates the COSMOS strong-lens candidates with weak-lensing and X-ray large-scale structure.",
+      "lenses": []
+    },
+    {
+      "id": "faure2008",
+      "section": "prior_search",
+      "title": "First catalog of strong lens candidates in the COSMOS field",
+      "authors": "Faure et al.",
+      "year": 2008,
+      "journal": "ApJS 176, 19-38",
+      "doi": "10.1086/526426",
+      "arxiv": "0802.2174",
+      "ads": null,
+      "summary": "Visual search of the HST/ACS COSMOS imaging that found 67 galaxy-galaxy lens candidates, the first COSMOS lens catalogue.",
+      "lenses": [
+        {
+          "code": "COSJ095914+021219",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ095921+020638",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ100012+022015",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ100047+015023",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ095930+021351",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ100050+020357",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ095940+023253",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ095857+015949",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ100047+022931",
+          "role": "discovered"
+        }
+      ]
+    },
+    {
+      "id": "jackson2008",
+      "section": "prior_search",
+      "title": "Gravitational lenses and lens candidates identified from the COSMOS field",
+      "authors": "Jackson",
+      "year": 2008,
+      "journal": "MNRAS 389, 1311-1318",
+      "doi": "10.1111/j.1365-2966.2008.13629.x",
+      "arxiv": "0806.3693",
+      "ads": null,
+      "summary": "Complete manual inspection of ~285,000 COSMOS HST galaxies that recovered Faure's lenses and listed 112 more candidates.",
+      "lenses": [
+        {
+          "code": "COSJ100103+020159",
+          "role": "discovered"
+        },
+        {
+          "code": "COSJ100023+021652",
+          "role": "discovered"
+        }
+      ]
+    }
+  ]
+}

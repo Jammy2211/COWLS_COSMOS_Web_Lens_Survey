@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About COWLS Data</title>
-<meta name="description" content="What is in the COWLS data release: catalogue columns, per-lens files, archival and PRIMER data, and the definitions of the physical quantities.">
+<meta name="description" content="What is in the COWLS data release: tiers, catalogue columns, per-lens files, archival and PRIMER data, and the definitions of the physical quantities.">
 <link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js" crossorigin="anonymous"></script>
@@ -12,11 +12,22 @@
   onload="renderMathInElement(document.getElementById('prose'), {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
 </head>
 <body data-page="about">
-<header class="topbar"><div class="wrap"><a class="brand" href="index.html">COWLS</a><nav class="topnav" aria-label="Site"><a href="index.html">Gallery</a><a href="about.html">About the data</a><a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a></nav></div></header>
+<header class="topbar"><div class="wrap"><a class="brand" href="index.html">COWLS</a><nav class="topnav" aria-label="Site"><a href="index.html">Gallery</a><a href="papers.html">Papers</a><a href="about.html" aria-current="page">About the data</a><a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a></nav></div></header>
 <main class="wrap">
 <article class="prose" id="prose">
 <h1 style="margin-top:24px">About the COWLS data</h1>
 <p>The data release lives in the <a href="https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey">GitHub repository</a>. Lenses are grouped into tier folders: <code>M25</code> (the 17 spectacular, confirmed lenses of COWLS&nbsp;II) and <code>S00</code>&ndash;<code>S12</code> (418 candidates, named by visual-inspection score). The catalogue also lists 5 <code>P18</code> rows: known lenses from prior work included in the catalogue for completeness; they have no COWLS data folder.</p>
+
+<h2 id="tiers">Tiers</h2>
+<p>The 17 lenses in <code>M25</code>, presented in COWLS&nbsp;II (Mahler et al. 2025), are all confirmed strong lenses with high signal-to-noise JWST imaging. The other candidates sit in folders named by the score the visual inspectors gave them:</p>
+<ul>
+  <li><code>S10</code>&ndash;<code>S12</code>: very high-quality lens candidates.</li>
+  <li><code>S07</code>&ndash;<code>S09</code>: high-quality lens candidates.</li>
+  <li><code>S05</code>&ndash;<code>S06</code>: medium-quality lens candidates.</li>
+  <li><code>S02</code>&ndash;<code>S04</code>: low-quality lens candidates.</li>
+  <li><code>S00</code>&ndash;<code>S01</code>: very low-quality lens candidates.</li>
+</ul>
+<p>COWLS&nbsp;III (Hogg et al. 2025) predicts that the sample contains about 100 strong lenses. Without spectroscopic source redshifts, confirming a candidate can be hard, so when choosing candidates to work on, think about how your analysis can confirm that they are lenses.</p>
 
 <h2 id="catalogue">Catalogue</h2>
 <p>The file <code>catalogue.csv</code> has 440 rows (435 candidates with a data folder plus the 5 <code>P18</code> lenses) and the following columns.</p>
@@ -81,10 +92,23 @@
   <li><strong>Noise maps:</strong> noise maps are instrument-specific and may require conversion to RMS noise values.</li>
   <li><strong>Pixel scale conversion:</strong> pixel scales vary and must be extracted from the <code>.fits</code> headers.</li>
 </ul>
+<p>The COWLS team is working on scripts for noise-map calculation and pixel-scale determination. Contributions from the community are welcome.</p>
 
 <h2 id="primer">PRIMER</h2>
 <p>The <a href="https://primer-jwst.github.io">PRIMER survey</a> provides additional deep JWST and HST wavebands for a subset of 32 lenses. The file <code>primer.csv</code> lists these candidates (its <code>directory</code> column gives each lens folder), and the <code>primer/</code> folder in each of those lens folders contains the corresponding data.</p>
 <p>If you use PRIMER data, please cite Dunlop J. S., et al., 2021, <em>PRIMER: Public Release IMaging for Extragalactic Research</em>, JWST Proposal. Cycle 1, ID. #1837, and the official PRIMER data release paper if it is available.</p>
+
+<h2 id="using">Using COWLS data</h2>
+<p>If you are using COWLS data in your research, please contact the COSMOS-Web Lensing Science Working Group to coordinate and avoid duplicated work; collaboration helps everyone get the most from the sample. Please cite the three survey papers (see <a href="papers.html#citing">Citing COWLS</a>).</p>
+<p><strong>Found a JWST lens?</strong> COSMOS-Web covers just 0.54&nbsp;deg², a small fraction of the NIRCam imaging JWST has taken. If you have found other JWST strong-lens candidates you would like to share with the community, get in touch with the COWLS team and we will work on adding them to this repository.</p>
+
+<h2 id="science-goals">Science goals</h2>
+<ul>
+  <li><strong>Highest-redshift source galaxies:</strong> probing sources at $z &gt; 6$, giving insight into the epoch of reionization.</li>
+  <li><strong>Highest-redshift lens galaxies:</strong> many lenses are at $z &gt; 1$, some beyond $z &gt; 2$.</li>
+  <li><strong>Cosmology with strong and weak lensing:</strong> using the contiguous 0.54&nbsp;deg² field for precise cosmic-shear measurements.</li>
+  <li><strong>Supermassive black holes:</strong> detecting the influence of supermassive black holes on lensing signals.</li>
+</ul>
 
 <h2 id="physical-quantities">Physical quantities</h2>
 <h3>Geometry</h3>
