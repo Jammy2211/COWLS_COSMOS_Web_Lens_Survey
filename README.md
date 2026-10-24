@@ -2,7 +2,9 @@
 
 [![Browse the COWLS lenses](https://img.shields.io/badge/Browse_the_lenses-jamesnightingale.net-7fb0ff?style=for-the-badge)](https://jamesnightingale.net/COWLS_COSMOS_Web_Lens_Survey/)
 
-[![COWLS RGB Image](https://github.com/Jammy2211/COWLS_COSMOS_Web_Lens_Survey/blob/main/cowls_ii_rgb.png?raw=true)](https://jamesnightingale.net/COWLS_COSMOS_Web_Lens_Survey/)
+[![COWLS lenses: click to browse them all on the website](docs/readme_banner.png)](https://jamesnightingale.net/COWLS_COSMOS_Web_Lens_Survey/)
+
+<p align="center"><a href="https://jamesnightingale.net/COWLS_COSMOS_Web_Lens_Survey/"><em>Click the image to browse every lens on the website →</em></a></p>
 
 COWLS is a catalogue of over 400 strong-lens candidates found in JWST imaging of the COSMOS field, including 17 spectacular confirmed lenses. Every candidate has four-band NIRCam images plus archival HST and ground-based data, and most have a lens model made with [PyAutoLens](https://github.com/Jammy2211/PyAutoLens).
 
